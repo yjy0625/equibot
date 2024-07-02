@@ -69,44 +69,31 @@ The commands below evaluates the trained EquiBot policy on the four different se
 ```
 # Original setup
 python -m equibot.policies.eval --config-name fold_mobile_equibot \
-    prefix="eval_original_sim_mobile_fold_equibot_s1" \
-    mode=eval \
+    prefix="eval_original_sim_mobile_fold_equibot_s1" mode=eval \
     training.ckpt="[log_dir]/train/sim_mobile_fold_7dof_equibot_s1/ckpt01999.pth" \
     env.args.max_episode_length=50 env.vectorize=true
 
 # R+Su setup
 python -m equibot.policies.eval --config-name fold_mobile_equibot \
-    prefix="eval_rsu_sim_mobile_fold_7dof_equibot_s1" \
-    mode=eval \
+    prefix="eval_rsu_sim_mobile_fold_7dof_equibot_s1" mode=eval \
     training.ckpt="[log_dir]/train/sim_mobile_fold_7dof_equibot_s1/ckpt01999.pth" \
-    env.args.scale_high=2 \
-    env.args.uniform_scaling=true \
-    env.args.randomize_rotation=true \
-    env.args.randomize_scale=true env.vectorize=true
+    env.args.scale_high=2 env.args.uniform_scaling=true \
+    env.args.randomize_rotation=true env.args.randomize_scale=true env.vectorize=true
 
 # R+Sn setup
 python -m equibot.policies.eval --config-name fold_mobile_equibot \
-    prefix="eval_rsn_sim_mobile_fold_7dof_equibot_s1" \
-    mode=eval \
+    prefix="eval_rsn_sim_mobile_fold_7dof_equibot_s1" mode=eval \
     training.ckpt="[log_dir]/train/sim_mobile_fold_7dof_equibot_s1/ckpt01999.pth" \
-    env.args.scale_high=2 \
-    env.args.scale_aspect_limit=1.33 \
-    env.args.randomize_rotation=true \
-    env.args.randomize_scale=true \
-    env.vectorize=true
+    env.args.scale_high=2 env.args.scale_aspect_limit=1.33 \
+    env.args.randomize_rotation=true env.args.randomize_scale=true env.vectorize=true
 
 # R+Sn+P setup
 python -m equibot.policies.eval --config-name fold_mobile_equibot \
-    prefix="eval_rsnp_sim_mobile_fold_7dof_equibot_s1" \
-    mode=eval \
+    prefix="eval_rsnp_sim_mobile_fold_7dof_equibot_s1" mode=eval \
     training.ckpt="[log_dir]/train/sim_mobile_fold_7dof_equibot_s1/ckpt01999.pth" \
-    env.args.scale_high=2 \
-    env.args.scale_aspect_limit=1.33 \
-    env.args.randomize_rotation=true \
-    env.args.randomize_scale=true \
-    +env.args.randomize_position=true \
-    +env.args.rand_pos_scale=0.5 \
-    env.vectorize=true
+    env.args.scale_high=2 env.args.scale_aspect_limit=1.33 \
+    env.args.randomize_rotation=true env.args.randomize_scale=true \
+    +env.args.randomize_position=true +env.args.rand_pos_scale=0.5 env.vectorize=true
 ```
 
 ## License
