@@ -16,7 +16,7 @@ This repository includes:
 
 ### Installation
 
-This codebase is tested with the following setup: Ubuntu 20.04, an RTX 4090 GPU, CUDA 11.8.
+This codebase is tested with the following setup: Ubuntu 20.04, an RTX 4090 GPU, CUDA 11.8. In the root directory of the repository, run the following commands:
 
 ```
 conda create -n lfd python=3.10 -y
@@ -29,11 +29,11 @@ pip install "git+https://github.com/facebookresearch/pytorch3d.git"
 pip install -e .
 ```
 
-Then, in the last two lines of [this config file](equibot/policies/configs/base.yaml), enter the wandb entity and project names for logging purposes.
+Then, in the last two lines of [this config file](equibot/policies/configs/base.yaml), enter the wandb entity and project names for logging purposes. If you do not have a wandb account yet, you can register [here](https://wandb.ai).
 
 ### Demonstration Generation
 
-The following code generates demonstrations for simulated mobile environments. To change number of generated demos, change `--num_demos 50` to a different number.
+The following code generates demonstrations for simulated mobile environments. To change the number of generated demos, change `--num_demos 50` to a different number.
 
 ```
 python -m equibot.envs.sim_mobile.generate_demos --data_out_dir ../data/fold \
@@ -48,7 +48,7 @@ python -m equibot.envs.sim_mobile.generate_demos --data_out_dir ../data/close \
 
 ### Training
 
-The following code runs training for our method and the Diffusion Policy baseline. Fill the dataset path with the `data_out_dir` argument in the previous section. Make sure the dataset path ends with `pcs`. To run this code for the `cover` and `close` environments, substitute occurances of `fold` with `cover` or `close`.
+The following code runs training for our method and the Diffusion Policy baseline. Fill the dataset path with the `data_out_dir` argument in the previous section. Make sure the dataset path ends with `pcs`. To run this code for the `cover` and `close` environments, substitute occurrences of `fold` with `cover` or `close`.
 
 ```
 # diffusion policy baseline (takes point clouds as input)
@@ -64,7 +64,7 @@ python -m equibot.policies.train --config-name fold_mobile_equibot \
 
 ### Evaluation
 
-The commands below evaluates the trained EquiBot policy on the four different setups mentioned in the paper: `Original`, `R+Su`, `R+Sn`, and `R+Sn+P`. To run these evaluations for the DP baseline, simply replace all occurances of `equibot` to`dp`. For the log directory, fill `[log_dir]` with the absolute path to log directory. By default, this directory is `./log`.
+The commands below evaluate the trained EquiBot policy on the four different setups mentioned in the paper: `Original`, `R+Su`, `R+Sn`, and `R+Sn+P`. To run these evaluations for the DP baseline, replace all occurrences of `equibot` to`dp`. For the log directory, fill `[log_dir]` with the absolute path to the log directory. By default, this directory is `./log`.
 
 ```
 # Original setup
