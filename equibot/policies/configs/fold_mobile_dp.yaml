@@ -1,0 +1,15 @@
+defaults:
+  - base
+
+env:
+  env_class: fold
+  args:
+    max_episode_length: 50
+    cam_resolution: 256
+    deform_bending_stiffness: 0.01
+    deform_damping_stiffness: 1.0
+    deform_elastic_stiffness: 150.0
+    deform_friction_coeff: 1.0
+    vis: true
+    freq: 5
+    ac_noise: 0.0

@@ -1,0 +1,35 @@
+from setuptools import setup
+
+
+setup(name="equibot",
+      version="0.1",
+      description="",
+      author="",
+      author_email="",
+      license="",
+      packages=[],
+      install_requires=[
+          "click",
+          "matplotlib",
+          "scipy",
+          "tqdm",
+          "opencv-python==4.9.0.80",
+          "opencv-python-headless==4.9.0.80",
+          "opencv-contrib-python==4.7.0.72",
+          "hydra-core",
+          "wandb",
+          "chardet",
+          "trimesh[all]",
+          "natsort",
+          "ffmpeg",
+          "imageio[ffmpeg]",
+          "ipykernel",
+          "robosuite",
+          "gtimer",
+          "scikit-video",
+          "einops",
+          "diffusers",
+          "gym==0.26.2",
+          "pybullet==3.2.6",
+          "protobuf==3.20.0"
+      ])

@@ -1,0 +1,11 @@
+defaults:
+  - base
+
+env:
+  env_class: close
+  args:
+    max_episode_length: 100
+    cam_resolution: 256
+    vis: true
+    freq: 5
+    ac_noise: 0.0

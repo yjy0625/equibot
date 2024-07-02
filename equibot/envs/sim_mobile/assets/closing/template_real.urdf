@@ -1,0 +1,222 @@
+<?xml version="1.0" ?>
+<robot name="container">
+    <material name="gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+    </material>
+    <link name="base">
+        <inertial>
+            <mass value="1.0" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <link name="bottom">
+        <visual>
+            <origin xyz="0 0 ${T / 2}" />
+            <geometry>
+                <box size="${L - T} ${W - T} ${T}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${T / 2}" />
+            <geometry>
+                <box size="${L - T} ${W - T} ${T}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1000.0" />
+            <origin xyz="0 0 ${T / 2}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <joint name="joint:bottom" type="fixed">
+        <origin xyz="0 0 0" />
+        <axis xyz="0 0 0" />
+        <child link="bottom" />
+        <parent link="base" />
+    </joint>
+
+    <link name="left">
+        <visual>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${T} ${W - T} ${H}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${T} ${W - T} ${H}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <joint name="joint:left" type="fixed">
+        <origin xyz="${-L / 2} 0 ${H / 2}" />
+        <axis xyz="0 0 0" />
+        <child link="left" />
+        <parent link="base" />
+    </joint>
+    <link name="right">
+        <visual>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${T} ${W - T} ${H}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${T} ${W - T} ${H}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <joint name="joint:right" type="fixed">
+        <origin xyz="${L / 2} 0 ${H / 2}" />
+        <axis xyz="0 0 0" />
+        <child link="right" />
+        <parent link="base" />
+    </joint>
+    <link name="front">
+        <visual>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${L + T} ${T} ${H - T}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${L + T} ${T} ${H - T}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <joint name="joint:front" type="fixed">
+        <origin xyz="0 ${-W / 2} ${H / 2 - T / 2}" />
+        <axis xyz="0 0 0" />
+        <child link="front" />
+        <parent link="base" />
+    </joint>
+    <link name="back">
+        <visual>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${L + T} ${T} ${H}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="${L + T} ${T} ${H}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <joint name="joint:back" type="fixed">
+        <origin xyz="0 ${W / 2} ${H / 2}" />
+        <axis xyz="0 0 0" />
+        <child link="back" />
+        <parent link="base" />
+    </joint>
+
+
+    <link name="flap_left">
+        <visual>
+            <origin xyz="${-L / 6} 0 0" />
+            <geometry>
+                <box size="${L / 3} ${W} ${T}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="${-L / 6} 0 0" />
+            <geometry>
+                <box size="${L / 3} ${W} ${T}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <origin xyz="${-L / 6} 0 0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+    </link>
+    <joint name="joint:flap_left" type="revolute">
+        <origin xyz="${-T / 2} ${-T / 2} ${H / 2 - T / 2}" />
+        <axis xyz="0 1 0" />
+        <child link="flap_left" />
+        <parent link="left" />
+        <dynamics effort="100" damping="0.0" friction="0.0"/>
+        <limit lower="0" upper="3.14" />
+    </joint>
+    <link name="flap_right">
+        <visual>
+            <origin xyz="${L / 6} 0 0" />
+            <geometry>
+                <box size="${L / 3} ${W} ${T}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="${L / 6} 0 0" />
+            <geometry>
+                <box size="${L / 3} ${W} ${T}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <origin xyz="${L / 6} 0 0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+    </link>
+    <joint name="joint:flap_right" type="revolute">
+        <origin xyz="${T / 2} ${-T / 2} ${H / 2 - T / 2}" />
+        <axis xyz="0 -1 0" />
+        <child link="flap_right" />
+        <parent link="right" />
+        <dynamics effort="100" damping="0.0" friction="0.0"/>
+        <limit lower="0" upper="3.14" />
+    </joint>
+    <link name="flap_back">
+        <visual>
+            <origin xyz="0 ${W / 2 + T / 2} 0" />
+            <geometry>
+                <box size="${L + T} ${W + T} ${T}" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 ${W / 2 + T / 2} 0" />
+            <geometry>
+                <box size="${L + T} ${W + T} ${T}" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <origin xyz="0 ${W / 2 + T / 2} 0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+    </link>
+    <joint name="joint:flap_back" type="revolute">
+        <origin xyz="0 ${T / 2} ${H / 2 + T / 2}" />
+        <axis xyz="1 0 0" />
+        <child link="flap_back" />
+        <parent link="back" />
+        <dynamics effort="100" damping="0.0" friction="0.0"/>
+        <limit lower="-0.7071" upper="3.14" />
+    </joint>
+</robot>
